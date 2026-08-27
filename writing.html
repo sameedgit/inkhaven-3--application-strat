@@ -1,0 +1,249 @@
+<!DOCTYPE html><html lang="en-GB"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Inkhaven 3 — Writing advice</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a09'/%3E%3Cpath d='M10.5 8h11v3.1h-3.6v9.8h3.6V24h-11v-3.1h3.6v-9.8h-3.6z' fill='%23e2703f'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<style>
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 14px;align-items:start}
+  .job{background:var(--raised);border:1px solid var(--border);border-radius:12px;padding:15px 17px}
+  .job.key{border-color:color-mix(in srgb,var(--orange) 45%,var(--border))}
+  .job h4{margin:0 0 2px;font-size:15.5px;font-weight:660;color:var(--ink)}
+  .job .un{font-family:var(--sans);font-size:12.5px;color:var(--muted);margin:0 0 11px}
+  .job dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 13px;font-size:13.5px}
+  .job dt{font-family:var(--sans);color:var(--muted);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;
+    font-weight:640;padding-top:3px;white-space:nowrap}
+  .job dd{margin:0;color:var(--ink2)}
+  .job dd b{color:var(--ink);font-weight:660}
+  @media(max-width:700px){.two{grid-template-columns:1fr}}
+  .r .ex a{text-decoration:none}
+  .r .ex a:hover{text-decoration:underline}
+  .legend .br{flex-basis:100%;height:0;margin:0}
+  .legend b{color:var(--ink);font-weight:660}
+  /* the heat map keeps its original palette */
+  .bands,.chart{--raised:#fff; --grid:#e1e0d9; --rule:#c3c2b7; --border:rgba(11,11,11,.10);
+    --ink2:#52514e; --muted:#898781; --blue:#2a78d6; --orange:#eb6834;
+    --gr:#0f8a3d; --bl:#2a78d6; --ye:#9a7b00;
+    --hl-sig:#1d4ed8; --hl-core:#9a7b00; --hl-both:#0f8a3d}
+  :root[data-theme="dark"] .bands,:root[data-theme="dark"] .chart{
+    --raised:#212120; --grid:#2c2c2a; --rule:#383835; --border:rgba(255,255,255,.10);
+    --ink2:#c3c2b7; --muted:#898781; --blue:#3987e5; --orange:#d95926;
+    --gr:#35c46a; --bl:#5aa2ee; --ye:#d9a520;
+    --hl-sig:#6aa8ff; --hl-core:#d9a520; --hl-both:#35c46a}
+  .bands{margin:16px 0 20px}
+  .cells{display:grid;grid-template-columns:repeat(auto-fill,minmax(164px,1fr));gap:6px}
+  .cell{border-radius:8px;padding:9px 11px;
+    display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+    background:color-mix(in srgb,var(--c) 14%,var(--raised));
+    border:1px solid color-mix(in srgb,var(--c) 40%,var(--border))}
+  .cell.g{--c:var(--gr)} .cell.b{--c:var(--bl)} .cell.y{--c:var(--ye)}
+  .cell .t{font-size:13px;color:var(--ink);white-space:nowrap;overflow:hidden;
+    text-overflow:ellipsis;text-decoration:underline;
+    text-decoration-color:color-mix(in srgb,var(--c) 55%,transparent);
+    text-underline-offset:3px;text-decoration-thickness:1px}
+  a.cell:hover .t{text-decoration-color:var(--c);text-decoration-thickness:2px}
+  .cell.g .t{font-weight:680}
+  .cell .p{font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums;flex:none}
+  .cell .p i{font-style:normal;margin-left:5px;opacity:.75;color:var(--c)}
+  a.cell{text-decoration:none;transition:background-color .12s,border-color .12s}
+  a.cell:hover{background:color-mix(in srgb,var(--c) 26%,var(--raised));
+    border-color:color-mix(in srgb,var(--c) 62%,var(--border));opacity:1}
+  a.cell:hover .p i{opacity:.9}
+  .ckey b{font-weight:660}
+  .ckey .kg{color:var(--gr)} .ckey .kb{color:var(--bl)} .ckey .ky{color:var(--ye)}
+  @media(max-width:520px){.cells{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+    .cell .t{font-size:12.5px}}
+  .ins{margin:14px 0 18px;padding-left:19px}
+  .ins li{margin:9px 0;font-size:14.5px}
+  .ins li b{color:var(--ink);font-weight:660}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;align-items:center;
+    font-size:12.5px;color:var(--ink2);margin:2px 6px 10px}
+  .sw{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:-1px}
+  .sw.sq{border-radius:2px;background:color-mix(in srgb,var(--c) 40%,transparent);
+    box-shadow:inset 2px 0 0 var(--c)}
+  .sw.ln{width:0;height:12px;border-radius:0;border-left:1px dashed var(--hl-core);
+    vertical-align:-2px;margin:0 7px 0 3px}
+  .day{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--grid)}
+  .day .d{font-weight:640;color:var(--ink);font-size:14px}
+  .day .w{font-size:14.5px;color:var(--ink2)}
+  .gate{background:color-mix(in srgb,var(--good) 9%,transparent);border-left:3px solid var(--good);
+    padding:9px 14px;margin:2px 0 10px;border-radius:0 8px 8px 0;font-size:13.5px;color:var(--ink)}
+  .gate b{color:var(--good)}
+  .chart{background:var(--raised);border:1px solid var(--border);border-radius:12px;
+    padding:14px 4px 6px;margin:16px 0}
+  .chd,.r{display:grid;grid-template-columns:116px 52px 1fr 58px 46px 78px;gap:12px;align-items:center;
+    padding:0 14px}
+  .chd .n{text-align:right}
+  .chd{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);
+    font-weight:640;padding-bottom:7px;border-bottom:1px solid var(--grid);margin-bottom:2px;
+    align-items:flex-end}
+  .axis{position:relative;height:13px;margin:0 7px;text-transform:none;letter-spacing:0}
+  .axis i{position:absolute;bottom:0;transform:translateX(-50%);font-size:10.5px;
+    font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
+  .axis i:first-child{transform:none}
+  .axis i:last-child{transform:translateX(-100%)}
+  .r{padding-top:5px;padding-bottom:5px;border-bottom:1px solid var(--grid);font-size:13px}
+  .r:last-child{border-bottom:0}
+  .r:hover{background-color:var(--grid)}
+  /* filter 1: the outer dot clears 7.5%.  filter 2: and delta positive and significant. */
+  .r.core{--c:var(--hl-core)}
+  .r.best{--c:var(--hl-both)}
+  .r.core{background-color:color-mix(in srgb,var(--c) 9%,transparent);
+    box-shadow:inset 2px 0 0 var(--c)}
+  .r.core:hover{background-color:color-mix(in srgb,var(--c) 16%,transparent)}
+  .r.best{background-color:color-mix(in srgb,var(--c) 17%,transparent);
+    box-shadow:inset 4px 0 0 var(--c)}
+  .r.best:hover{background-color:color-mix(in srgb,var(--c) 27%,transparent)}
+  .r .cat{font-weight:620;color:var(--ink)}
+  .r .dl{text-align:right;font-variant-numeric:tabular-nums;font-weight:640;color:var(--ink)}
+  .r:not(.core) .cat{font-weight:400;color:var(--ink2)}
+  .r:not(.core) .dl{font-weight:400;color:var(--muted)}
+  .r .md{text-align:right;font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--muted)}
+  .r.core .md{color:var(--c);font-weight:640}
+  .r .pv{text-align:right;font-size:12.5px;color:var(--muted)}
+  .r.best .pv{color:var(--c);font-weight:660}
+  .chd .sg{text-align:right;line-height:1.25}
+  .r .bar{position:relative;height:20px;margin:0 7px;
+    background:repeating-linear-gradient(to right,var(--grid) 0 1px,transparent 1px 20%)}
+  .r .bar i{position:absolute;top:50%;display:block}
+  .r .bar .tr{left:0;right:0;height:1px;background:var(--grid);transform:translateY(-50%)}
+  .r .bar .cl{top:-5px;bottom:-5px;height:auto;width:0;transform:none;
+    border-left:1px dashed var(--hl-core)}
+  .chart .cl-lab{position:relative;height:0}
+  .r .bar .seg{height:2px;background:var(--rule);border-radius:2px;transform:translateY(-50%)}
+  .r .bar .dot{width:9px;height:9px;border-radius:50%;transform:translate(-50%,-50%);
+    box-sizing:border-box;box-shadow:0 0 0 2px var(--raised)}
+  .r:hover .bar .dot{box-shadow:0 0 0 2px var(--grid)}
+  .r .bar .dot.w{background:var(--blue)} .r .bar .dot.f{background:var(--orange)}
+  .r:not(.best) .bar .dot{background:transparent}
+  .r:not(.best) .bar .dot.w{border:2px solid var(--blue)}
+  .r:not(.best) .bar .dot.f{border:2px solid var(--orange)}
+  .r .ex{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  @media(max-width:760px){.chd{display:none}
+    .r{grid-template-columns:1fr 44px 44px 78px;
+      grid-template-areas:"cat md dl pv" "bar bar bar bar" "ex ex ex ex";
+      gap:3px;padding:9px 14px}
+    .r .cat{grid-area:cat}.r .bar{grid-area:bar}.r .md{grid-area:md}
+    .r .dl{grid-area:dl}.r .pv{grid-area:pv}
+    .r .ex{grid-area:ex;white-space:normal}}
+  #write ~ p, .ckey{max-width:none}
+</style></head><body>
+
+<nav><div class="wrap">
+  <a class="brand" href="index.html">Inkhaven 3</a>
+  <a href="guide.html">Guidebook</a>
+  <a href="plan.html">Action plan</a>
+  <a href="people.html">Social hunt</a>
+  <a href="writing.html" class="on">Writing advice</a>
+  <a href="library.html">Library</a>
+  <button class="theme" id="theme" type="button"></button>
+</div></nav>
+
+<div class="wrap">
+<h1>Writing advice</h1>
+
+<h2 id="how">How to write</h2>
+<p>Two different jobs, with different rules.</p>
+
+<div class="two">
+
+<div class="job key">
+  <h4>The essays you submit</h4>
+  <p class="un">The main thing you are judged on. Up to five.</p>
+  <dl>
+    <dt>Length</dt><dd><b>1,000–1,500 words</b> — never under 500</dd>
+    <dt>Rate</dt><dd><b>One a week</b>, so each gets real effort</dd>
+    <dt>Aim</dt><dd>Argument-driven, one clear thesis, a specific audience</dd>
+    <dt>Topics</dt><dd>From <a href="#write">the heat map below</a></dd>
+  </dl>
+</div>
+
+<div class="job">
+  <h4>The daily posts</h4>
+  <p class="un">The public track record the form asks about.</p>
+  <dl>
+    <dt>Length</dt><dd><b>500 words</b> is enough</dd>
+    <dt>Rate</dt><dd><b>Every day</b></dd>
+    <dt>Where</dt><dd><b>LessWrong</b> counts most — engagement there is scored</dd>
+    <dt>Aim</dt><dd>Fresh, not a polished backlog. <b>Quantity beats polish</b>.</dd>
+  </dl>
+</div>
+
+</div>
+
+<p class="sub"><strong>Karma</strong> is LessWrong's upvote score. Ben Pace's
+<a href="https://www.lesswrong.com/posts/CA6XfmzYoGFWNhH8e/the-inkhaven-residency" target="_blank" rel="noopener">rough test</a>
+for whether you would get in: a couple of comments at <strong>50+</strong>, or a post or two at
+<strong>100+</strong>.</p>
+
+<h2 id="write">What to write about</h2>
+<p class="ckey">We read every post from the last two cohorts, and every post Inkhaven picked out as
+worth reading. These are the most seminal topics. The higher the percentage, the more of the
+community's writing a topic accounts for. <b class="kg">Green</b> ones the community rates
+especially highly, clearly enough to trust; <b class="kb">blue</b> ones it rates highly too, but not
+clearly enough to rule out luck. The <b class="ky">rest</b> show no advantage either way.</p>
+
+<div class="bands" id="bands"></div>
+
+<p><strong>The five essays that you will submit should be from these categories.</strong> Note,
+however, that <strong>a rare category will not necessarily make you stand out.</strong> Rather you
+should match the collective interests of the community and write on topics that are popular.
+<strong>Your differentiation lies in writing novel and compelling essays within each
+category.</strong></p>
+
+<p>For a more detailed view consider the following heat-map:</p>
+
+<div class="chart">
+  <div class="legend">
+    <span><i class="sw" style="background:var(--blue)"></i>Written</span>
+    <span><i class="sw" style="background:var(--orange)"></i>Featured</span>
+    <span>The outer dot must clear the <i class="sw ln"></i>7.5% line</span>
+    <span class="br"></span>
+    <span><i class="sw sq" style="--c:var(--hl-core)"></i><b>Possible</b> — the higher of the two clears 7.5%</span>
+    <span><i class="sw sq" style="--c:var(--hl-both)"></i><b>Best</b> — that, plus delta positive and significant</span>
+  </div>
+  <div class="chd"><span>Category</span><span>Example</span><span class="axis"><i style="left:0%">0%</i><i style="left:20%">5%</i><i style="left:40%">10%</i><i style="left:60%">15%</i><i style="left:80%">20%</i><i style="left:100%">25%</i></span><span class="n">Delta&nbsp;↓</span><span class="n">Peak</span><span class="sg">Statistically significant?</span></div>
+  <div id="rows"></div>
+</div>
+
+<footer>
+<a href="guide.html">← Guidebook</a> · <a href="plan.html">Action plan</a>
+</footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+/* one list, ranked by written share; colour = the featuring signal */
+(function(){
+  const cls=d=> d.d>0 && d.sig ? "g" : d.d>0 ? "b" : "y";
+  const peak=d=>Math.max(d.w,d.f);
+  const cells=TOPICS.filter(d=>peak(d)>=7.5).sort((a,b)=>peak(b)-peak(a)).map(d=>
+    `<a class="cell ${cls(d)}" href="${d.url}" target="_blank" rel="noopener" `+
+    `title="${d.cat} — example post. Written ${d.w}% of posts, featured ${d.f}%, peak ${peak(d).toFixed(1)}%, Δ ${d.d>0?"+":""}${d.d.toFixed(1)}pp, ${d.lift}×${d.sig?" — significant":" — not distinguishable from chance"}">`+
+    `<span class="t">${d.cat}</span><span class="p">${peak(d).toFixed(1)}%<i>↗</i></span></a>`).join("");
+  document.getElementById("bands").innerHTML=`<div class="cells">${cells}</div>`;
+})();
+
+const MAXX=25, CORE=7.5, DIR=1, pc=v=>(v/MAXX)*100;
+document.getElementById("rows").innerHTML=TOPICS.map(d=>{
+  const peak=Math.max(d.w,d.f), core=peak>=CORE;            // the outer of the two dots
+  const best=core&&d.sig&&d.d>0;                            // filter 2 sits inside filter 1
+  const dir=d.d>=DIR?"up":d.d<=-DIR?"down":"flat";
+  const c=[core?"core":"",best?"best":""].filter(Boolean).join(" ");
+  const pv=d.sig?"Yes":"No";
+  const lo=Math.min(d.w,d.f), hi=Math.max(d.w,d.f);
+  const bar=`<span class="bar"><i class="tr"></i><i class="cl" style="left:${pc(CORE).toFixed(2)}%"></i>`+
+    `<i class="seg" style="left:${pc(lo).toFixed(2)}%;width:${(pc(hi)-pc(lo)).toFixed(2)}%"></i>`+
+    `<i class="dot f" style="left:${pc(d.f).toFixed(2)}%"></i>`+
+    `<i class="dot w" style="left:${pc(d.w).toFixed(2)}%"></i></span>`;
+  return `<div class="r ${c}" title="${d.cat}: written ${d.w}% (${d.wn} posts) · featured ${d.f}% (${d.fn} posts) · peak ${peak.toFixed(1)}% — ${best?"BEST — significant and positive":core?"in the register":"off-register"} · ${dir==="flat"?"flat":dir==="up"?"leans featured":"leans written"} · ${d.lift}× · p=${d.p}${d.sig?" — significant":" — not distinguishable from chance"}">`+
+    `<span class="cat">${d.cat}</span>`+
+    `<span class="ex"><a href="${d.url}" target="_blank" rel="noopener" aria-label="Open example post for ${d.cat}">Link ↗</a></span>`+
+    bar+
+    `<span class="dl">${d.d>0?"+":""}${d.d.toFixed(1)}</span>`+
+    `<span class="md">${peak.toFixed(1)}</span>`+
+    `<span class="pv">${pv}</span></div>`;
+}).join("");
+
+</script></body></html>
